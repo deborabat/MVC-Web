@@ -16,9 +16,12 @@ app.use(
   })
 );
 app.use((req, res, next) => {
-  res.locals.session = req.session;
+  res.locals.session = req.session; // navbar usa session
   next();
 });
+
+const adminRoutes = require('./src/routes/admin');
+app.use('/admin', adminRoutes);
 
 app.set("views", path.join(__dirname, "src", "views"));
 app.set("view engine", "ejs");
@@ -26,16 +29,17 @@ app.use(express.static(path.join(__dirname, "src", "public")));
 
 (async () => {
   try {
-    await sequelize.sync({ alter: true }); // <-- usa alter para ajustar colunas existentes
+    // trocar alter:true por sync() para não tentar modificar tabelas existentes
+    await sequelize.sync(); // <-- menos invasivo que { alter: true }
 
     // require/mount routes after sync
     const authRoutes = require("./src/routes/auth");
     const projectRoutes = require("./src/routes/projects");
-    const adminRoutes = require('./src/routes/admin');
 
     app.use("/", authRoutes);
     app.use("/projects", projectRoutes);
-    app.use("/admin", adminRoutes);
+    const myKnowledges = require('./src/routes/myKnowledges');
+    app.use('/my/knowledges', myKnowledges);
 
     app.get("/", (req, res) => res.redirect("/projects"));
 
