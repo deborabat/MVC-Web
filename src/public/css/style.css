@@ -1,0 +1,5 @@
+body {
+  background: #f7f9fc;
+}
+.card-title { color: #0d6efd; }
+.text-truncate { max-height: 3.6em; overflow: hidden; }

@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+  <div class="container">
+    <a class="navbar-brand" href="/">MVC Web</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item"><a class="nav-link" href="/projects">Projetos</a></li>
+      </ul>
+
+      <ul class="navbar-nav">
+        <% if (typeof session !== 'undefined' && session && session.studentId) { %>
+          <li class="nav-item">
+            <span class="navbar-text me-3">Olá, <%= session.studentName || ('Aluno ' + session.studentId) %></span>
+          </li>
+          <li class="nav-item">
+            <form method="post" action="/logout" class="d-inline">
+              <button class="btn btn-outline-light btn-sm">Sair</button>
+            </form>
+          </li>
+        <% } else { %>
+          <li class="nav-item"><a class="btn btn-outline-light btn-sm" href="/login">Login</a></li>
+        <% } %>
+      </ul>
+    </div>
+  </div>
+</nav>
