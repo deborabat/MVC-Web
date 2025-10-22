@@ -1,0 +1,44 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Logs
+logs/
+*.log
+*.log.*
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Build / output
+dist/
+build/
+.tmp/
+temp/
+
+# Coverage
+coverage/
+.nyc_output
+
+# Runtime files
+*.local
+*.lock
+
+# Environment variables
+.env
+.env.* 
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editors/IDEs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Misc
