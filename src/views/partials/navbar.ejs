@@ -8,6 +8,9 @@
     <div class="collapse navbar-collapse" id="mainNav">
       <ul class="navbar-nav me-auto">
         <li class="nav-item"><a class="nav-link" href="/projects">Projetos</a></li>
+        <% if (session && session.isAdmin) { %>
+          <li class="nav-item"><a class="nav-link" href="/admin/students">Admin</a></li>
+        <% } %>
       </ul>
 
       <ul class="navbar-nav">
